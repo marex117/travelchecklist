@@ -121,3 +121,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#Redirecciones
+# Si un usuario intenta entrar en una vista protegida sin iniciar sesión,
+# Django lo enviará a esta URL.
+LOGIN_URL = 'trips:login'
+
+# Después de iniciar sesión correctamente, Django lo redirigirá aquí.
+LOGIN_REDIRECT_URL = 'trips:home'
+
+# Después de cerrar sesión, el usuario volverá a esta página.
+LOGOUT_REDIRECT_URL = 'trips:home'
