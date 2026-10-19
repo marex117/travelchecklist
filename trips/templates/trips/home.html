@@ -1,4 +1,6 @@
+
 {% extends 'trips/base.html' %}
+
 {% block title %}Inicio | TravelChecklist{% endblock %}
 
 {% block content %}
@@ -6,11 +8,21 @@
     <div class="card">
       <h1>Organiza tus viajes sin perderte nada</h1>
       <p>
-        TravelChecklist es una web sencilla para guardar viajes y sus tareas.
+        Guarda destinos, fechas y tareas importantes en una sola aplicación.
       </p>
-      <p class="muted">
-        En el siguiente bloque añadiremos registro, login y logout.
-      </p>
+
+      {% if user.is_authenticated %}
+        <p>Has iniciado sesión como <strong>{{ user.username }}</strong>.</p>
+        <div class="actions">
+          <a class="button" href="{% url 'trips:trip_list' %}">Ver mis viajes</a>
+          <a class="button secondary" href="/admin/">Ir al admin</a>
+        </div>
+      {% else %}
+        <div class="actions">
+          <a class="button" href="{% url 'trips:login' %}">Iniciar sesión</a>
+          <a class="button secondary" href="{% url 'trips:signup' %}">Crear cuenta</a>
+        </div>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
